@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Particle Reconstructor</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="tool-panel" aria-label="Particle reconstruction controls">
+        <header class="panel-header">
+          <p class="eyebrow">GPU image laboratory</p>
+          <h1>Particle Reconstructor</h1>
+          <a
+            class="support-link"
+            href="https://buymeacoffee.com/chcofficial"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Support CHC Official on BuyMeACoffee
+          </a>
+        </header>
+
+        <label class="file-drop" for="imageInput" id="dropZone">
+          <input id="imageInput" type="file" accept="image/*">
+          <span class="file-drop-title">Load image</span>
+          <span class="file-drop-copy" id="sourceName">Iridescent fox</span>
+        </label>
+
+        <section class="control-group">
+          <label for="defaultImageSelect">Default image</label>
+          <select id="defaultImageSelect">
+            <option value="demo">Generated demo image</option>
+            <option value="gold">Gold portrait</option>
+            <option value="fox" selected>Iridescent fox</option>
+            <option value="halo">Halo world</option>
+            <option value="nebula">Space nebula</option>
+            <option value="knight">Rainbow knight</option>
+            <option value="custom" hidden>Uploaded image</option>
+          </select>
+        </section>
+
+        <section class="control-group">
+          <label for="modeSelect">Reconstruction mode</label>
+          <select id="modeSelect">
+            <option value="0">Pointillist reconstruction</option>
+            <option value="1" selected>Thread art</option>
+            <option value="3">Ink diffusion</option>
+            <option value="6">Swarming agents</option>
+            <option value="7">Vortex loom</option>
+            <option value="8">Magnetic filings</option>
+            <option value="9">Cellular growth</option>
+          </select>
+        </section>
+
+        <section class="control-group">
+          <div class="range-label">
+            <label for="particleCount">Particles</label>
+            <output id="particleOutput">500K</output>
+          </div>
+          <input id="particleCount" type="range" min="30000" max="1000000" step="10000" value="500000">
+          <button id="rebuildButton" type="button">Rebuild particle field</button>
+        </section>
+
+        <section class="control-grid">
+          <div class="control-group compact">
+            <div class="range-label">
+              <label for="speedRange">Motion</label>
+              <output id="speedOutput">1.00</output>
+            </div>
+            <input id="speedRange" type="range" min="0.1" max="2.5" step="0.05" value="1">
+          </div>
+
+          <div class="control-group compact">
+            <div class="range-label">
+              <label for="energyRange">Flow</label>
+              <output id="energyOutput">0.65</output>
+            </div>
+            <input id="energyRange" type="range" min="0" max="1.4" step="0.01" value="0.65">
+          </div>
+
+          <div class="control-group compact">
+            <div class="range-label">
+              <label for="sizeRange">Scale</label>
+              <output id="sizeOutput">1.60</output>
+            </div>
+            <input id="sizeRange" type="range" min="0.5" max="5" step="0.05" value="1.6">
+          </div>
+
+          <div class="control-group compact">
+            <div class="range-label">
+              <label for="lineRange">Threads</label>
+              <output id="lineOutput">0.55</output>
+            </div>
+            <input id="lineRange" type="range" min="0" max="1" step="0.01" value="0.55">
+          </div>
+        </section>
+
+        <section class="button-row" aria-label="Simulation actions">
+          <button id="scatterButton" type="button">Scatter</button>
+          <button id="freezeButton" type="button" aria-pressed="false">Pause</button>
+        </section>
+
+        <dl class="stats-list">
+          <div>
+            <dt>Renderer</dt>
+            <dd id="rendererStatus">Starting WebGL2</dd>
+          </div>
+          <div>
+            <dt>Frame rate</dt>
+            <dd id="fpsStatus">-- fps</dd>
+          </div>
+          <div>
+            <dt>Image</dt>
+            <dd id="imageStatus">Demo source</dd>
+          </div>
+        </dl>
+      </aside>
+
+      <main class="stage" aria-label="Particle image reconstruction viewport">
+        <canvas id="glCanvas"></canvas>
+        <canvas
+          id="brandCanvas"
+          class="brand-particles"
+          aria-label="CHCOfficial particle signature"
+          role="img"
+        ></canvas>
+        <div class="stage-overlay">
+          <div>
+            <p id="modeTitle">Pointillist reconstruction</p>
+            <span id="modeDescription">Particles chase sampled image pixels with soft additive color.</span>
+          </div>
+          <div class="hint">Move or drag across the image to shape the field</div>
+        </div>
+        <div class="unsupported" id="unsupportedMessage" hidden>
+          WebGL2 is required for the GPU particle renderer.
+        </div>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
