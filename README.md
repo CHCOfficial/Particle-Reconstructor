@@ -6,6 +6,9 @@ fields, threads, ink, swarms, magnetic filings, and cellular growth patterns.
 The app runs as a static browser project. Open `index.html` directly, or serve
 the folder locally for the most reliable asset loading.
 
+<img width="2246" height="1840" alt="image" src="https://github.com/user-attachments/assets/2788a57e-ca29-4593-a0fe-48bb00c4c4b1" />
+
+
 ## Features
 
 - WebGL2 particle renderer with high particle counts.
